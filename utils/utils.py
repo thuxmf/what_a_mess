@@ -62,7 +62,7 @@ def convert_semesters(semesters):
             semesters = [semester+'-1', semester+'-3']
         # A single semester, e.g., '2020-2021-1'
         elif len(semester) == 11:
-            semester = [semester, semester]
+            semesters = [semester, semester]
         else:
             raise ValueError(f'Wrong type of semester, only input of the forms'
                              f' `2020-2021-1,2020-2021-2`, `2020-2021` and '

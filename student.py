@@ -69,12 +69,11 @@ class Student(object):
         """Add a course using a LAZY strategy, i.e., if adding a course with
         the same name as a previous one, overwrite it directly.
         """
-        if course.name in self._courses:
-            warnings.warn(f'Try to add a course the second time with '
-                          f'({course.name}, {self._name}).')
+        # if course.name in self._courses:
+        #     warnings.warn(f'Try to add a course the second time with '
+        #                   f'({course.name}, {self._name}).')
         self._courses[course.name] = course
         if course.rank == 'F':
-            print(course)
             self._failed_courses[course.name] = course
         return course
 
@@ -103,11 +102,12 @@ class Student(object):
 
     def collect_failed_courses(self, semesters=None):
         failed = []
+        print(semesters)
         for _, course in self._failed_courses.items():
             if semesters is not None:
                 if not semesters[0] <= course.semester <= semesters[1]:
                     continue
-                failed.append(course.info())
+            failed.append(course.info())
         return failed
 
     def info(self):
