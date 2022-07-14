@@ -45,10 +45,14 @@ class Course(object):
         """
         self._name = name
         self._rank = rank
-        try:
-            self._grade = float(grade)
-        except ValueError:
+        # Rank 'F' will get a N/A.
+        if not 0.0 <= grade <= 4.0:
             self._grade = 0.0
+        else:
+            try:
+                self._grade = float(grade)
+            except ValueError:
+                self._grade = 0.0
         self._score = int(score)
         self._course_type = course_type
         self._teacher = teacher
@@ -109,7 +113,8 @@ class Course(object):
             'score': self._score,
             'course_type': self._course_type,
             'teacher': self._teacher,
-            'semester': self._semester
+            'semester': self._semester,
+            'calc_grade_flag': self.calc_grade_flag()
         }
         return info_dict
 

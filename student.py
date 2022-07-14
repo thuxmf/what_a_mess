@@ -89,6 +89,7 @@ class Student(object):
                 continue
             # Discard if this course not in the specified semester.
             if semesters is not None:
+                print(semesters[0], course.semester, semesters[1], semesters[0] <= course.semester, course.semester <= semesters[1])
                 if not semesters[0] <= course.semester <= semesters[1]:
                     continue
             # Discard if this course cannot be calculated.
@@ -98,11 +99,11 @@ class Student(object):
             total_score += course.score
         if total_score == 0:
             return 0, 0.0
+        # print(total_score, total_grade, float(total_score), total_grade / float(total_score))
         return total_score, total_grade / float(total_score)
 
     def collect_failed_courses(self, semesters=None):
         failed = []
-        print(semesters)
         for _, course in self._failed_courses.items():
             if semesters is not None:
                 if not semesters[0] <= course.semester <= semesters[1]:

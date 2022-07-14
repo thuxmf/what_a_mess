@@ -47,8 +47,9 @@ class DataBase(dict):
         grades_classwise = {class_name: [] for class_name in CLASS_NAMES}
         for class_name, class_list in self._classes.items():
             for student in class_list:
-                average_grade, total_score = student.calc_average_grade(
+                total_score, average_grade = student.calc_average_grade(
                     type_level, semesters)
+                # print(student.name, average_grade)
                 grades_classwise[class_name].append((
                     student.id, student.name,
                     class_name, total_score, average_grade))

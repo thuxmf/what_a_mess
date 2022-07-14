@@ -69,7 +69,7 @@ def convert_semesters(semesters):
                              f'`2020-2021-1` are allowed.')
         return semesters
     # A complete interval
-    elif len(semesters):
+    elif len(semesters) == 2:
         return semesters
     else:
         raise ValueError(f'Wrong type of semester, only input of the forms'
@@ -107,7 +107,7 @@ def sort(grades, strategy):
     """Sort the grade records in one class, allow three kinds of strategies,
     i.e., grade, id or total grade."""
     if strategy == 'grade':
-        cmp = lambda x: x[3]
+        cmp = lambda x: x[4]
     elif strategy == 'id':
         cmp = lambda x: x[0]
     elif strategy == 'total':

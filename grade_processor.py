@@ -65,7 +65,6 @@ def calculate(database_path, type_level, semesters, save_path, strategy):
     semesters = convert_semesters(semesters)
     average_grades = database.update_average_grade(type_level, semesters)
     sort(average_grades, strategy)
-    print(average_grades)
     dfs = [grades2df(grades) for grades in average_grades.values()]
     XLSXProcessor.save(save_path, dfs, CLASS_NAMES)
 
